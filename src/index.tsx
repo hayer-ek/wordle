@@ -5,6 +5,7 @@ import fileWords from "./ru";
 import checkRu from "./manyRu";
 import looseModal from "./components/looseModal";
 import winModal from "./components/winModal";
+import notification from "./components/notification";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
@@ -39,6 +40,7 @@ class App extends Component<props, state> {
             Array.from(inputsContainer.children).forEach((child, index) => {
                 this.inputs.push(child);
                 child.addEventListener("input", () => {
+                    (child as any).value = (child as any).value.toLowerCase();
                     this.changeInput(index);
                     (child as any).disabled = true;
                 });
@@ -114,13 +116,14 @@ class App extends Component<props, state> {
             return letter;
         });
 
-        if (!checkRu.split(" ").includes(inputWord.join(""))) {
+        if (!checkRu.split(" ").includes(inputWord.join("").toLowerCase())) {
             setTimeout(() => {
                 this.inputs.forEach((input) => {
                     (input as any).disabled = false;
                 });
                 (this.inputs as any)[0].focus();
             });
+            notification("Слово не найдено");
             return;
         }
 
@@ -205,7 +208,6 @@ class App extends Component<props, state> {
 
     render() {
         const attempts = this.state.attempts;
-        console.log(this.state.word);
         return (
             <div className="app">
                 <div className="stat">{`Осталось попыток: ${
@@ -236,6 +238,7 @@ class App extends Component<props, state> {
                         );
                     })}
                 </div>
+                <div className="notifications" />
             </div>
         );
     }

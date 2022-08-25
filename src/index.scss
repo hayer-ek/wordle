@@ -11,9 +11,8 @@ body,
 #root {
     width: 100%;
     height: 100%;
+    background-color: #1f1f1f;
 }
-
-$inputSize: 100px;
 
 .app {
     width: 100%;
@@ -24,7 +23,7 @@ $inputSize: 100px;
     justify-content: center;
     flex-direction: column;
     .stat {
-        position: fixed;
+        position: absolute;
         color: white;
         font-size: 30px;
         top: 20px;
@@ -37,8 +36,8 @@ $inputSize: 100px;
         justify-content: space-between;
         input {
             text-align: center;
-            height: $inputSize;
-            width: $inputSize;
+            height: 100px;
+            width: 100px;
             font-size: 50px;
             border: none;
             outline: none;
@@ -62,7 +61,7 @@ $inputSize: 100px;
             color: white;
             div {
                 margin: 5px 1px;
-                padding: $inputSize / 50 $inputSize / 8;
+                padding: 0 10px;
             }
             .none {
                 background-color: #5a5a5a;
@@ -100,6 +99,170 @@ $inputSize: 100px;
             font-size: 30px;
             background-color: black;
             color: white;
+            cursor: pointer;
+        }
+    }
+    .notifications {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 15px;
+        .notification {
+            position: relative;
+            margin-top: 10px;
+            width: 150px;
+            height: 50px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ec58589e;
+            border-radius: 10px;
+            outline: #c37272 solid 2px;
+            animation: notificationStart 0.5s ease;
+        }
+        .close {
+            position: unset;
+            animation: notificationEnd 1s ease;
+        }
+    }
+}
+
+@keyframes notificationStart {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+    100% {
+        top: 0px;
+        opacity: 1;
+    }
+}
+
+@keyframes notificationEnd {
+    50% {
+        left: 0px;
+        opacity: 1;
+    }
+    100% {
+        left: -100px;
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .app {
+        .stat {
+            font-size: 25px;
+        }
+        .inputs-container {
+            width: 500px;
+            input {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+            }
+        }
+        .notification {
+            font-size: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .app {
+        .stat {
+            font-size: 20px;
+        }
+        .inputs-container {
+            width: 400px;
+            input {
+                width: 60px;
+                height: 60px;
+                font-size: 35px;
+            }
+        }
+        .tries {
+            .word {
+                font-size: 40px;
+                div {
+                    padding: 0 8px;
+                }
+            }
+        }
+        .notifications {
+            font-size: 10px;
+            .notification {
+                width: 150px;
+                height: 40px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .app {
+        .stat {
+            font-size: 15px;
+        }
+        .inputs-container {
+            width: 300px;
+            input {
+                width: 50px;
+                height: 50px;
+                font-size: 30px;
+            }
+        }
+        .tries {
+            .word {
+                font-size: 35px;
+                div {
+                    padding: 0 6px;
+                }
+            }
+        }
+        .notifications {
+            font-size: 10px;
+            .notification {
+                width: 140px;
+                height: 35px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .app {
+        .stat {
+            font-size: 15px;
+        }
+        .inputs-container {
+            width: 92%;
+            padding: 0 4%;
+            input {
+                width: 12%;
+                height: 100%;
+                font-size: 20px;
+            }
+        }
+        .tries {
+            .word {
+                font-size: 35px;
+                div {
+                    padding: 0 6px;
+                }
+            }
+        }
+        .notifications {
+            font-size: 10px;
+            .notification {
+                width: 140px;
+                height: 35px;
+            }
         }
     }
 }
