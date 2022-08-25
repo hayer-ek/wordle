@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+$inputSize: 100px;
+
+.app {
+    width: 100%;
+    height: 100%;
+    background-color: #1f1f1f;
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .stat {
+        position: fixed;
+        color: white;
+        font-size: 30px;
+        top: 20px;
+        left: 20px;
+    }
+    .inputs-container {
+        width: 700px;
+        margin: 100px auto 0;
+        display: flex;
+        justify-content: space-between;
+        input {
+            text-align: center;
+            height: $inputSize;
+            width: $inputSize;
+            font-size: 50px;
+            border: none;
+            outline: none;
+        }
+        :disabled {
+            background-color: white;
+            color: black;
+            pointer-events: none;
+        }
+    }
+    .tries {
+        margin: auto;
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .word {
+            font-size: 50px;
+            display: flex;
+            flex-direction: row;
+            color: white;
+            div {
+                margin: 5px 1px;
+                padding: $inputSize / 50 $inputSize / 8;
+            }
+            .none {
+                background-color: #5a5a5a;
+            }
+            .right {
+                background-color: #61bb59;
+            }
+            .has {
+                background-color: #e0c343;
+            }
+        }
+    }
+    .modal {
+        background-color: #969696a2;
+        color: black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .text {
+            opacity: 1;
+            font-size: 30px;
+            color: white;
+        }
+        .button {
+            margin-top: 40px;
+            opacity: 1;
+            width: 100px;
+            height: 50px;
+            font-size: 30px;
+            background-color: black;
+            color: white;
+        }
+    }
+}
